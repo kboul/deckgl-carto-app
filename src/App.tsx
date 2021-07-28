@@ -1,3 +1,7 @@
+import Map from './components/Map';
+
 export default function App() {
-  return <div>Deckgl Carto App</div>;
+  const viewState = { longitude: 0, latitude: 0, zoom: 2 };
+
+  return <Map viewState={viewState} />;
 }
