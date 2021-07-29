@@ -7,12 +7,8 @@ import {
   API_VERSIONS
 } from '@deck.gl/carto';
 
-import {
-  cartoLayerOptions,
-  mapboxApiAccessToken,
-  tileLayer
-} from './constants';
 import MapProps from './model';
+import * as consts from './constants';
 
 setDefaultCredentials({
   apiVersion: API_VERSIONS.V2,
@@ -20,22 +16,24 @@ setDefaultCredentials({
   apiKey: 'default_public'
 });
 
-const Map: FC<MapProps> = ({ viewState }) => {
+const Map: FC<MapProps> = ({ polygonColor, strokeColor, viewState }) => {
   const layer = new CartoLayer({
     data: 'SELECT * FROM ne_50m_admin_0_countries',
-    ...cartoLayerOptions
+    getFillColor: polygonColor,
+    getLineColor: strokeColor,
+    ...consts.cartoLayerOptions
   });
 
   return (
     <DeckGL
       controller
-      height="100%"
-      width="100%"
+      height={consts.mapHeight}
       initialViewState={viewState}
-      layers={[layer]}>
+      layers={[layer]}
+      width={consts.mapWidth}>
       <StaticMap
-        mapboxApiAccessToken={mapboxApiAccessToken}
-        mapStyle={tileLayer}
+        mapboxApiAccessToken={consts.mapboxApiAccessToken}
+        mapStyle={consts.tileLayer}
         preventStyleDiffing
         reuseMaps
       />
