@@ -5,6 +5,7 @@ import {
   setDefaultCredentials,
   API_VERSIONS
 } from '@deck.gl/carto';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 import MapProps from './model';
 import * as consts from './constants';

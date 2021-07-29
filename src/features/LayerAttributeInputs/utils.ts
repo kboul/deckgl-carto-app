@@ -8,8 +8,8 @@ const hexToRgb = (hex: string): number[] => {
   return [r, g, b];
 };
 
-const componentToHex = (c: number): string => {
-  const hex = c.toString(16);
+const componentToHex = (component: number): string => {
+  const hex = component.toString(16);
   return hex.length === 1 ? `0${hex}` : hex;
 };
 
@@ -18,4 +18,17 @@ const rgbToHex = (rgb: number[]): string =>
     rgb[2]
   )}`;
 
-export { hexToRgb, rgbToHex };
+const capitalFirstLetter = (word: string): string =>
+  word.charAt(0).toUpperCase() + word.slice(1);
+
+const splitWordOnCapitalLetter = (word: string): string[] =>
+  word.split(/(?=[A-Z])/);
+
+const inputNameToLabel = (inputName: string): string =>
+  splitWordOnCapitalLetter(inputName)
+    .map((name, index) =>
+      index === 0 ? capitalFirstLetter(name) : `${name.toLowerCase()} `
+    )
+    .join(' ');
+
+export { hexToRgb, inputNameToLabel, rgbToHex };
