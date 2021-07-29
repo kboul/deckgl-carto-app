@@ -2,18 +2,20 @@ import Input from '../../components/Input';
 import LineBreaker from './LineBreaker';
 import { ChangeEvent } from '../../models';
 import LayerOptionsInputsProps from './model';
-import { hexToRgb, rgbToHex } from './utils';
+import { hexToRgb, inputNameToLabel, rgbToHex } from './utils';
+import { inputNames } from './constants';
 import styles from './styles.module.sass';
 
 export default function LayerAttributeInputs({
   polygonColor,
+  setValue,
   strokeColor,
-  strokeSize,
-  setValue
+  strokeSize
 }: LayerOptionsInputsProps) {
   const handleInputChange = (field: string) => (e: ChangeEvent) => {
+    const newValue = e.target.value;
     const value =
-      field === 'strokeSize' ? e.target.value : hexToRgb(e.target.value);
+      field === inputNames.strokeSize ? newValue : hexToRgb(newValue);
     setValue(field, value);
   };
 
@@ -23,9 +25,9 @@ export default function LayerAttributeInputs({
 
       <form className={styles.form}>
         <Input
-          label="Polygon color "
-          name="polygonColor"
-          onChange={handleInputChange('polygonColor')}
+          label={inputNameToLabel(inputNames.polygonColor)}
+          name={inputNames.polygonColor}
+          onChange={handleInputChange(inputNames.polygonColor)}
           type="color"
           value={rgbToHex(polygonColor)}
         />
@@ -33,9 +35,9 @@ export default function LayerAttributeInputs({
         <LineBreaker />
 
         <Input
-          label="Stroke color "
-          name="strokeColor"
-          onChange={handleInputChange('strokeColor')}
+          label={inputNameToLabel(inputNames.strokeColor)}
+          name={inputNames.strokeColor}
+          onChange={handleInputChange(inputNames.strokeColor)}
           type="color"
           value={rgbToHex(strokeColor)}
         />
@@ -44,11 +46,12 @@ export default function LayerAttributeInputs({
 
         <Input
           className={styles.strokeSize}
-          label="Stroke size "
-          maxLength={4}
-          name="strokeSize"
+          label={inputNameToLabel(inputNames.strokeSize)}
+          maxLength={1}
           min={0}
-          onChange={handleInputChange('strokeSize')}
+          max={9}
+          name={inputNames.strokeSize}
+          onChange={handleInputChange(inputNames.strokeSize)}
           step="1"
           type="number"
           value={String(strokeSize)}
