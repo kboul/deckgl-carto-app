@@ -4,8 +4,7 @@ const mapboxApiAccessToken = process.env.REACT_APP_MAPBOX_TOKEN;
 
 const cartoLayerOptions = {
   type: MAP_TYPES.QUERY,
-  pointRadiusMinPixels: 2,
-  lineWidthMinPixels: 1
+  pointRadiusMinPixels: 2
 };
 
 const mapHeight = '100%';

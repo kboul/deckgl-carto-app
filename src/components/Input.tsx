@@ -1,9 +1,15 @@
-export default function Input({ ...otherProps }) {
-  const { id, label, onChange, value } = otherProps;
+import { InputHTMLAttributes } from 'react';
+
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  label: string;
+  name: string;
+}
+
+export default function Input({ label, name, ...otherProps }: InputProps) {
   return (
     <>
-      <label htmlFor={id}>{label} </label>
-      <input id={id} onChange={onChange} type="color" value={value} />
+      <label htmlFor={name}>{label}</label>
+      <input id={name} {...otherProps} />
     </>
   );
 }

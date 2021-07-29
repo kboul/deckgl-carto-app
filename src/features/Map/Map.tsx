@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import DeckGL from '@deck.gl/react';
 import { StaticMap } from 'react-map-gl';
 import {
@@ -16,11 +15,17 @@ setDefaultCredentials({
   apiKey: 'default_public'
 });
 
-const Map: FC<MapProps> = ({ polygonColor, strokeColor, viewState }) => {
+export default function Map({
+  polygonColor,
+  strokeColor,
+  strokeSize,
+  viewState
+}: MapProps) {
   const layer = new CartoLayer({
     data: 'SELECT * FROM ne_50m_admin_0_countries',
     getFillColor: polygonColor,
     getLineColor: strokeColor,
+    lineWidthMinPixels: strokeSize,
     ...consts.cartoLayerOptions
   });
 
@@ -39,6 +44,4 @@ const Map: FC<MapProps> = ({ polygonColor, strokeColor, viewState }) => {
       />
     </DeckGL>
   );
-};
-
-export default Map;
+}
