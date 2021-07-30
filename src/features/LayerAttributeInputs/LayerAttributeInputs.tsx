@@ -1,4 +1,4 @@
-import Input from '../../components/Input';
+import { Input } from '../../components';
 import LineBreaker from './LineBreaker';
 import { ChangeEvent } from '../../models';
 import LayerOptionsInputsProps from './model';
