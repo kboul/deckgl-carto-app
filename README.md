@@ -7,7 +7,7 @@ map layer attributes (polygon color, stroke size, stroke color) and also allows 
 
 The app uses mapbox which requires a unique token for each user to be able to use it.
 This token is stored in a file which is not included in the current app's github repo.
-Therefore, you need to create a .env file under src folder which will contain the env variable.
+Therefore, you need to create a .env file in the project's root directory which will contain the env variable.
 
 ```
 REACT_APP_MAPBOX_TOKEN=your_mapbox_token
@@ -32,3 +32,15 @@ npm start
 ```
 
 browser listens to [http://localhost:3000](http://localhost:3000) as default port.
+
+## Test the project
+
+```
+npm test
+```
+
+## Get project's test coverage
+
+```
+npm run test:coverage
+```

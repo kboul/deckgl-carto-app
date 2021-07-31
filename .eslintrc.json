@@ -1,15 +1,21 @@
 {
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "jest": true
   },
   "extends": [
+    "react-app",
+    "react-app/jest",
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "airbnb",
     "prettier",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "plugin:testing-library/recommended",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -23,7 +29,13 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "prettier",
+    "testing-library",
+    "jest-dom"
+  ],
   "rules": {
     "no-unused-vars": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".ts"] }],
@@ -60,6 +72,18 @@
         }
       }
     ],
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off",
+    // allow imports of devDependencies in test files only
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.test.ts",
+          "**/*.test.tsx",
+          "./src/setupTests.ts"
+        ]
+      }
+    ]
   }
 }

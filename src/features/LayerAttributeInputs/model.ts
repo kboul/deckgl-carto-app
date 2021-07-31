@@ -1,4 +1,4 @@
-export default interface LayerOptionsInputsProps {
+export default interface LayerAttributeInputsProps {
   polygonColor: number[];
   strokeColor: number[];
   strokeSize: number;

@@ -1,9 +1,9 @@
 import { Input } from '../../components';
 import LineBreaker from './LineBreaker';
 import { ChangeEvent } from '../../models';
-import LayerOptionsInputsProps from './model';
+import LayerAttributeInputsProps from './model';
 import { hexToRgb, inputNameToLabel, rgbToHex } from './utils';
-import { inputNames } from './constants';
+import { inputNames } from '../../constants';
 import styles from './styles.module.sass';
 
 export default function LayerAttributeInputs({
@@ -11,7 +11,7 @@ export default function LayerAttributeInputs({
   setValue,
   strokeColor,
   strokeSize
-}: LayerOptionsInputsProps) {
+}: LayerAttributeInputsProps) {
   const handleInputChange = (field: string) => (e: ChangeEvent) => {
     const newValue = e.target.value;
     const value =
@@ -25,6 +25,7 @@ export default function LayerAttributeInputs({
 
       <form className={styles.form}>
         <Input
+          ariaLabel={inputNames.polygonColor}
           label={inputNameToLabel(inputNames.polygonColor)}
           name={inputNames.polygonColor}
           onChange={handleInputChange(inputNames.polygonColor)}
@@ -35,6 +36,7 @@ export default function LayerAttributeInputs({
         <LineBreaker />
 
         <Input
+          ariaLabel={inputNames.strokeColor}
           label={inputNameToLabel(inputNames.strokeColor)}
           name={inputNames.strokeColor}
           onChange={handleInputChange(inputNames.strokeColor)}
@@ -45,6 +47,7 @@ export default function LayerAttributeInputs({
         <LineBreaker />
 
         <Input
+          ariaLabel={inputNames.strokeSize}
           className={styles.strokeSize}
           label={inputNameToLabel(inputNames.strokeSize)}
           maxLength={1}
