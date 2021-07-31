@@ -1,6 +1,6 @@
 {
   "name": "deckgl-carto-app",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "@deck.gl/carto": "^8.5.0",
@@ -8,9 +8,6 @@
     "@deck.gl/geo-layers": "^8.5.0",
     "@deck.gl/layers": "^8.5.0",
     "@deck.gl/react": "^8.5.0",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
     "@types/jest": "^26.0.24",
     "@types/node": "^12.20.17",
     "@types/react": "^17.0.15",
@@ -29,13 +26,16 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "lint": "eslint '*/**/*.{ts,tsx}' --max-warnings=0",
+    "test:coverage": "npm test -- --coverage --watchAll=false",
     "prepare": "husky install",
     "lint-staged": "npx lint-staged"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/index.tsx",
+      "!src/reportWebVitals.ts"
     ]
   },
   "browserslist": {
@@ -51,6 +51,10 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/dom": "^8.1.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "@testing-library/user-event": "^13.2.1",
     "@typescript-eslint/eslint-plugin": "^4.28.5",
     "@typescript-eslint/parser": "^4.28.5",
     "eslint": "^7.31.0",
@@ -58,11 +62,13 @@
     "eslint-config-node": "^4.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jest-dom": "^3.9.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-testing-library": "^3.10.2",
     "husky": "^6.0.0",
     "lint-staged": "^11.1.1",
     "prettier": "^2.3.2"

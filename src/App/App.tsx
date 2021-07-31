@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
 import { Map, LayerAttributeInputs } from '../features';
-import { initialState } from './constants';
+import { initialLayerAttributes } from '../constants';
 import styles from './styles.module.sass';
 
 export default function App() {
   const viewState = { latitude: 0, longitude: 0, zoom: 2 };
 
-  const [state, setState] = useState(initialState);
+  const [state, setState] = useState(initialLayerAttributes);
 
   const setValue = (field: string, value: any) =>
     setState(prevState => ({ ...prevState, [field]: value }));
