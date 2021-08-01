@@ -1,8 +1,14 @@
-import { Input } from '../../components';
+import { Alert, Input } from '../../components';
 import LineBreaker from './LineBreaker';
 import { ChangeEvent } from '../../models';
 import LayerAttributeInputsProps from './model';
-import { hexToRgb, inputNameToLabel, rgbToHex } from './utils';
+import {
+  getStrokeSizeOutlineColor,
+  hexToRgb,
+  inputNameToLabel,
+  invalidStrokeSize,
+  rgbToHex
+} from './utils';
 import { inputNames } from '../../constants';
 import styles from './styles.module.sass';
 
@@ -56,9 +62,18 @@ export default function LayerAttributeInputs({
           name={inputNames.strokeSize}
           onChange={handleInputChange(inputNames.strokeSize)}
           step="1"
+          style={{
+            outlineColor: getStrokeSizeOutlineColor(strokeSize)
+          }}
           type="number"
           value={String(strokeSize)}
         />
+
+        <LineBreaker />
+
+        {invalidStrokeSize(strokeSize) && (
+          <Alert>Value cannot be less than 0 or higher than 9</Alert>
+        )}
       </form>
       <hr />
     </div>

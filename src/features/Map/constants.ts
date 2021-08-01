@@ -9,7 +9,7 @@ const cartoLayerOptions = {
 
 const mapHeight = '100%';
 
-const mapWidth = '80%';
+const mapWidth = '70%';
 
 const tileLayer =
   'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
