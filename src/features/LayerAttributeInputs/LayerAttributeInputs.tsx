@@ -1,5 +1,4 @@
-import { Alert, Input } from '../../components';
-import LineBreaker from './LineBreaker';
+import { Alert, Input, LineBreaker } from '../../components';
 import { ChangeEvent } from '../../models';
 import LayerAttributeInputsProps from './model';
 import {
@@ -27,7 +26,7 @@ export default function LayerAttributeInputs({
 
   return (
     <div className={styles.container}>
-      <h3>Change Map Layer Attributes</h3>
+      <h3 className={styles.header}>Change Map Layer Attributes</h3>
 
       <form className={styles.form}>
         <Input
