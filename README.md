@@ -13,7 +13,8 @@ Therefore, you need to create a .env file in the project's root directory which 
 REACT_APP_MAPBOX_TOKEN=your_mapbox_token
 ```
 
-Define that variable like in the example above and you will be able to run the app.
+Define that variable like in the example above and you will be able to run the app without
+getting the mapbox token error on the console.
 
 ## Run the project
 
