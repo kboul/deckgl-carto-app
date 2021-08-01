@@ -1,3 +1,5 @@
+import { hexColors } from '../../../constants';
+
 const hexToRgb = (hex: string): number[] => {
   const r = parseInt(hex.substr(1, 2), 16);
   const g = parseInt(hex.substr(3, 2), 16);
@@ -29,4 +31,16 @@ const inputNameToLabel = (inputName: string): string =>
     )
     .join(' ');
 
-export { hexToRgb, inputNameToLabel, rgbToHex };
+const invalidStrokeSize = (strokeSize: number): boolean =>
+  strokeSize > 9 || strokeSize < 0;
+
+const getStrokeSizeOutlineColor = (strokeSize: number): string =>
+  invalidStrokeSize(strokeSize) ? hexColors.red : hexColors.white;
+
+export {
+  getStrokeSizeOutlineColor,
+  hexToRgb,
+  inputNameToLabel,
+  invalidStrokeSize,
+  rgbToHex
+};
