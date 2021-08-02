@@ -11,7 +11,9 @@ interface ResponseData {
   data: { rows: Array<any> };
 }
 
-export default function useApi(endpoint: string): ApiReturnType {
+const baseUrl = 'https://public.carto.com:443/api/v2/sql?q=';
+
+export default function useApi(sqlOperation: string): ApiReturnType {
   const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -22,7 +24,9 @@ export default function useApi(endpoint: string): ApiReturnType {
       setLoading(true);
 
       try {
-        const responseData: ResponseData = await axios.get(endpoint);
+        const responseData: ResponseData = await axios.get(
+          `${baseUrl}${sqlOperation}`
+        );
         setData(responseData.data.rows);
       } catch (err) {
         setError(err);
@@ -30,7 +34,7 @@ export default function useApi(endpoint: string): ApiReturnType {
       setLoading(false);
     };
     fetchData();
-  }, [endpoint]);
+  }, [sqlOperation]);
 
   return { data, loading, error };
 }
