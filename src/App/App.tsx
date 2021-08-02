@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Map, LayerAttributeInputs, ContinentInfo } from '../features';
+import { Map, LayerAttributeInputs, Widgets } from '../features';
 import { initialLayerAttributes } from '../constants';
 import styles from './styles.module.sass';
 
@@ -19,7 +19,7 @@ export default function App() {
       </div>
       <div className={styles.widgetsContainer}>
         <LayerAttributeInputs setValue={setValue} {...state} />
-        <ContinentInfo />
+        <Widgets />
       </div>
     </div>
   );
