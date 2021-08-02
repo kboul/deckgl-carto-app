@@ -2,13 +2,13 @@ import { InputHTMLAttributes } from 'react';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   ariaLabel?: string;
-  label: string;
+  label?: string;
   name: string;
 }
 
 export default function Input({
   ariaLabel,
-  label,
+  label = '',
   name,
   ...otherProps
 }: InputProps) {

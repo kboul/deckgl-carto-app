@@ -18,11 +18,10 @@ setDefaultCredentials({
 });
 
 export default function Map({
-  selectedContinents,
   polygonColor,
+  selectedContinents,
   strokeColor,
-  strokeSize,
-  viewState
+  strokeSize
 }: MapProps) {
   const cartoLayerQuery = getCartoLayerQuery(selectedContinents);
 
@@ -38,7 +37,7 @@ export default function Map({
     <DeckGL
       controller
       height={consts.mapHeight}
-      initialViewState={viewState}
+      initialViewState={consts.initialViewState}
       layers={[layer]}
       width={consts.mapWidth}>
       <StaticMap

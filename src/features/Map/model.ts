@@ -1,11 +1,5 @@
-export default interface MapProps {
-  polygonColor: number[];
+import { CartoLayerOptions } from '../../models';
+
+export default interface MapProps extends CartoLayerOptions {
   selectedContinents: string[];
-  strokeColor: number[];
-  strokeSize: number;
-  viewState: {
-    latitude: number;
-    longitude: number;
-    zoom: number;
-  };
 }

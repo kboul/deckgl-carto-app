@@ -1,10 +1,11 @@
 import { Fragment } from 'react';
 
 import { Alert, Input, LineBreaker } from '../../components';
-import { getSelectedContinentsNum, sortObjArrByProperty } from './utils';
+import { getSelectedContinentsNumber, sortObjArrayByProperty } from './utils';
 import { useApi } from '../../hooks';
 import WidgetsProps from './model';
 import {
+  barTooltip,
   baseUrl,
   countriesAlertMsg,
   countriesEndpoint,
@@ -21,7 +22,7 @@ export default function Widgets({
     loading: countriesLoading,
     error: countriesError
   } = useApi(`${baseUrl}${countriesEndpoint}`);
-  const countries = sortObjArrByProperty(data, 'continent');
+  const countries = sortObjArrayByProperty(data, 'continent');
 
   // eslint-disable-next-line consistent-return
   const handleBarChange = (continent: string) => () => {
@@ -36,7 +37,7 @@ export default function Widgets({
     setValue('selectedContinents', newSelectedContinents);
   };
 
-  if (countriesLoading && countries.length === 0)
+  if (countriesLoading)
     return <div className={styles.countriesLoader}>{countriesLoader}</div>;
 
   if (countries.length > 0)
@@ -45,7 +46,7 @@ export default function Widgets({
         <h3 className={styles.header}>Continent</h3>
 
         <div className={styles.selContNum}>
-          {getSelectedContinentsNum(selectedContinents)}
+          {getSelectedContinentsNumber(selectedContinents)}
         </div>
 
         <div className={styles.barsContainer}>
@@ -60,13 +61,13 @@ export default function Widgets({
 
               <Input
                 className={styles.barInput}
-                label=""
                 onChange={handleBarChange(continent)}
                 max={54}
                 name={continent}
                 style={{
                   opacity: selectedContinents.includes(continent) ? 0.5 : 1
                 }}
+                title={barTooltip}
                 type="range"
                 value={count}
               />
