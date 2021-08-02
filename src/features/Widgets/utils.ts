@@ -1,15 +1,18 @@
-const sortObjArrByProperty = (arr: Array<any>, property: string): any[] =>
-  arr.sort((a, b) =>
+const sortObjArrayByProperty = (array: any[], property: string): any[] =>
+  array.sort((a, b) =>
     a[property].toLowerCase() > b[property].toLowerCase() ? 1 : -1
   );
 
-const getSelectedContinentsNum = (selectedContinents: string[]): string => {
+const getSelectedContinentsNumber = (selectedContinents: string[]): string => {
   const selected = 'Selected';
   const selContLength = selectedContinents.length;
+  const totalContinentsNumber = 8;
+
   if (selContLength === 0) return `All ${selected}`;
-  return selContLength === 8
+
+  return selContLength === totalContinentsNumber
     ? `None ${selected}`
-    : `${8 - selContLength} ${selected}`;
+    : `${totalContinentsNumber - selContLength} ${selected}`;
 };
 
-export { getSelectedContinentsNum, sortObjArrByProperty };
+export { getSelectedContinentsNumber, sortObjArrayByProperty };

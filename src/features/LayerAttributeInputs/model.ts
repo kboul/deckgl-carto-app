@@ -1,6 +1,5 @@
-export default interface LayerAttributeInputsProps {
-  polygonColor: number[];
-  strokeColor: number[];
-  strokeSize: number;
-  setValue: (field: string, value: any) => void;
+import { CartoLayerOptions, SetValue } from '../../models';
+
+export default interface LayerAttributeInputsProps extends CartoLayerOptions {
+  setValue: SetValue;
 }

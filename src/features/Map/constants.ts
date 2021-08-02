@@ -16,9 +16,12 @@ const tileLayer =
 
 const initialCartoLayerQuery = 'SELECT * FROM ne_50m_admin_0_countries';
 
+const initialViewState = { latitude: 0, longitude: 0, zoom: 2 };
+
 export {
   cartoLayerOptions,
   initialCartoLayerQuery,
+  initialViewState,
   mapboxApiAccessToken,
   mapHeight,
   mapWidth,
