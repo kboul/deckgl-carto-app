@@ -84,6 +84,7 @@
           "./src/setupTests.ts"
         ]
       }
-    ]
+    ],
+    "react/no-array-index-key": "off"
   }
 }
