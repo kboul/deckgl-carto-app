@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
 import { Map, LayerAttributeInputs, Widgets } from '../features';
-import { initialLayerAttributes } from '../constants';
+import { initialState } from './constants';
 import styles from './styles.module.sass';
 
 export default function App() {
   const viewState = { latitude: 0, longitude: 0, zoom: 2 };
 
-  const [state, setState] = useState(initialLayerAttributes);
+  const [state, setState] = useState(initialState);
 
   const setValue = (field: string, value: any) =>
     setState(prevState => ({ ...prevState, [field]: value }));
@@ -19,7 +19,10 @@ export default function App() {
       </div>
       <div className={styles.widgetsContainer}>
         <LayerAttributeInputs setValue={setValue} {...state} />
-        <Widgets />
+        <Widgets
+          selectedContinents={state.selectedContinents}
+          setValue={setValue}
+        />
       </div>
     </div>
   );

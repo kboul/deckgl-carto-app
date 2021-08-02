@@ -8,6 +8,7 @@ import {
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 import MapProps from './model';
+import { getCartoLayerQuery } from './utils';
 import * as consts from './constants';
 
 setDefaultCredentials({
@@ -17,13 +18,16 @@ setDefaultCredentials({
 });
 
 export default function Map({
+  selectedContinents,
   polygonColor,
   strokeColor,
   strokeSize,
   viewState
 }: MapProps) {
+  const cartoLayerQuery = getCartoLayerQuery(selectedContinents);
+
   const layer = new CartoLayer({
-    data: 'SELECT * FROM ne_50m_admin_0_countries',
+    data: cartoLayerQuery,
     getFillColor: polygonColor,
     getLineColor: strokeColor,
     lineWidthMinPixels: strokeSize,

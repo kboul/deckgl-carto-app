@@ -14,8 +14,11 @@ const mapWidth = '70%';
 const tileLayer =
   'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
 
+const initialCartoLayerQuery = 'SELECT * FROM ne_50m_admin_0_countries';
+
 export {
   cartoLayerOptions,
+  initialCartoLayerQuery,
   mapboxApiAccessToken,
   mapHeight,
   mapWidth,
