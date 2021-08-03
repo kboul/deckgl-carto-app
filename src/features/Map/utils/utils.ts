@@ -1,4 +1,4 @@
-import { initialCartoLayerQuery } from './constants';
+import { initialCartoLayerQuery } from '../constants';
 
 const getCartoLayerQuery = (selectedContinents: string[]): string => {
   if (selectedContinents.length === 0) return initialCartoLayerQuery;

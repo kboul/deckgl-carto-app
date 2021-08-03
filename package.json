@@ -36,7 +36,8 @@
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx}",
       "!src/index.tsx",
-      "!src/reportWebVitals.ts"
+      "!src/reportWebVitals.ts",
+      "!src/tests/*/*"
     ]
   },
   "browserslist": {
