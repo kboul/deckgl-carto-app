@@ -81,7 +81,8 @@
         "devDependencies": [
           "**/*.test.ts",
           "**/*.test.tsx",
-          "./src/setupTests.ts"
+          "./src/setupTests.ts",
+          "./src/tests/*/*"
         ]
       }
     ],

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+import { baseUrl } from '../constants';
+
 interface ApiReturnType {
   data: any[];
   loading: boolean;
@@ -10,8 +12,6 @@ interface ApiReturnType {
 interface ResponseData {
   data: { rows: Array<any> };
 }
-
-const baseUrl = 'https://public.carto.com:443/api/v2/sql?q=';
 
 export default function useApi(sqlOperation: string): ApiReturnType {
   const [data, setData] = useState<any[]>([]);
