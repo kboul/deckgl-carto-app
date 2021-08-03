@@ -54,7 +54,7 @@ export default function Widgets({
       <>
         <h3 className={styles.header}>Continent</h3>
 
-        <div className={styles.selContNum}>
+        <div className={styles.selectedContinentsNumber}>
           {getSelectedContinentsNumber(selectedContinents)}
         </div>
 
@@ -69,6 +69,7 @@ export default function Widgets({
               </div>
 
               <Input
+                ariaLabel={`${continent} bar`}
                 className={styles.barInput}
                 onChange={handleBarChange(continent)}
                 max={arrObjsMaxAttrValue(countries, 'count')}
@@ -82,6 +83,7 @@ export default function Widgets({
               />
 
               <div
+                aria-label={`${continent} population`}
                 className={
                   styles.population
                 }>{`Population: ${getContinentPopulation(
@@ -97,8 +99,13 @@ export default function Widgets({
       </>
     );
 
-  if (countriesError) return <Alert>{consts.countriesAlertMsg}</Alert>;
-  if (populationError) return <Alert>{consts.populationAlertMsg}</Alert>;
+  if (countriesError || populationError)
+    return (
+      <>
+        {countriesError && <Alert>{consts.countriesAlertMsg}</Alert>}
+        {populationError && <Alert>{consts.populationAlertMsg}</Alert>}
+      </>
+    );
 
   return null;
 }

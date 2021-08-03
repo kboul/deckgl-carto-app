@@ -11,4 +11,16 @@ const countries = {
   ]
 };
 
-export { countries };
+const population = {
+  rows: [
+    { continent: 'Africa', sum: 994676469 },
+    { continent: 'Antarctica', sum: 3802 },
+    { continent: 'Asia', sum: 4098867140 },
+    { continent: 'Europe', sum: 729031916 },
+    { continent: 'North America', sum: 540816656 },
+    { continent: 'Oceania', sum: 34830526 },
+    { continent: 'Seven seas (open ocean)', sum: 1779782 }
+  ]
+};
+
+export { countries, population };
