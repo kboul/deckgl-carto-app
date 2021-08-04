@@ -9,6 +9,8 @@ import {
 } from '../features/Widgets/constants';
 import { countries } from '../tests/data';
 
+const initialOpacity = 1;
+
 beforeEach(() => render(<App />));
 
 // async operations
@@ -19,7 +21,7 @@ test('input bars appear on the screen with correct countries number & population
 
   const africaBar = await screen.findByLabelText(`${africa.continent} bar`);
   expect(africaBar).toHaveValue(africa.count.toString());
-  expect(africaBar).toHaveStyle({ opacity: '1' });
+  expect(africaBar).toHaveStyle({ opacity: initialOpacity });
 
   const africaPopulation = await screen.findByLabelText(
     `${africa.continent} population`
@@ -44,7 +46,7 @@ test('input bars appear on the screen with correct countries number & population
     `${antarctica.continent} bar`
   );
   expect(antarcticaBar).toHaveValue(antarctica.count.toString());
-  expect(antarcticaBar).toHaveStyle({ opacity: '1' });
+  expect(antarcticaBar).toHaveStyle({ opacity: initialOpacity });
 
   const antarcticaPopulation = await screen.findByLabelText(
     `${antarctica.continent} population`
@@ -58,7 +60,7 @@ test('input bars appear on the screen with correct countries number & population
 
   const asiaBar = await screen.findByLabelText(`${asia.continent} bar`);
   expect(asiaBar).toHaveValue(asia.count.toString());
-  expect(asiaBar).toHaveStyle({ opacity: '1' });
+  expect(asiaBar).toHaveStyle({ opacity: initialOpacity });
 
   const asiaPopulation = await screen.findByLabelText(
     `${asia.continent} population`
@@ -72,7 +74,7 @@ test('input bars appear on the screen with correct countries number & population
 
   const europeBar = await screen.findByLabelText(`${europe.continent} bar`);
   expect(europeBar).toHaveValue(europe.count.toString());
-  expect(europeBar).toHaveStyle({ opacity: '1' });
+  expect(europeBar).toHaveStyle({ opacity: initialOpacity });
 
   const europePopulation = await screen.findByLabelText(
     `${europe.continent} population`
@@ -90,7 +92,7 @@ test('input bars appear on the screen with correct countries number & population
     `${northAmerica.continent} bar`
   );
   expect(northAmericaBar).toHaveValue(northAmerica.count.toString());
-  expect(northAmericaBar).toHaveStyle({ opacity: '1' });
+  expect(northAmericaBar).toHaveStyle({ opacity: initialOpacity });
 
   const northAmericaPopulation = await screen.findByLabelText(
     `${northAmerica.continent} population`
@@ -104,7 +106,7 @@ test('input bars appear on the screen with correct countries number & population
 
   const oceaniaBar = await screen.findByLabelText(`${oceania.continent} bar`);
   expect(oceaniaBar).toHaveValue(oceania.count.toString());
-  expect(oceaniaBar).toHaveStyle({ opacity: '1' });
+  expect(oceaniaBar).toHaveStyle({ opacity: initialOpacity });
 
   const oceaniaPopulation = await screen.findByLabelText(
     `${oceania.continent} population`
@@ -122,7 +124,7 @@ test('input bars appear on the screen with correct countries number & population
     `${sevenSeas.continent} bar`
   );
   expect(sevenSeasBar).toHaveValue(sevenSeas.count.toString());
-  expect(sevenSeasBar).toHaveStyle({ opacity: '1' });
+  expect(sevenSeasBar).toHaveStyle({ opacity: initialOpacity });
 
   const sevenSeasPopulation = await screen.findByLabelText(
     `${sevenSeas.continent} population`
@@ -140,13 +142,13 @@ test('input bars appear on the screen with correct countries number & population
     `${southAmerica.continent} bar`
   );
   expect(southAmericaBar).toHaveValue(southAmerica.count.toString());
-  expect(southAmericaBar).toHaveStyle({ opacity: '1' });
+  expect(southAmericaBar).toHaveStyle({ opacity: initialOpacity });
 
   fireEvent.change(southAmericaBar, { target: { value: '' } });
   expect(southAmericaBar).toHaveStyle({ opacity: '0.5' });
 
   fireEvent.change(southAmericaBar, { target: { value: '' } });
-  expect(southAmericaBar).toHaveStyle({ opacity: '1' });
+  expect(southAmericaBar).toHaveStyle({ opacity: initialOpacity });
 
   const southAmericaPopulation = await screen.findByLabelText(
     `${southAmerica.continent} population`
